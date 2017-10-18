@@ -15,7 +15,7 @@ switch($action){
 	}
 	case'voirEtatVisite':{
 
-		$lePraticien = $_REQUEST['refPraticien'];
+		$lePraticien = $_REQUEST['nom'];
 		$lesPraticiens =$pdo->getLesPraticiens($idVisiteur);
 		$praticienASelectionner = $lePraticien;
 
@@ -24,7 +24,7 @@ switch($action){
 			$lesdates =$pdo->getLesDates($idVisiteur,$date);
 			$lesniveauxinterets = $pdo->getLesNiveauxPraticiens($idVisiteur,$niveauinteret);
 
-			$unPraticien = $lesPraticiens['refPraticien'];
+			$unPraticien = $lesPraticiens['nom'];
 			$laDate = $lesdates['FinDeVisite'];
 			$leNiveauinteret = $lesniveauxinterets['niveauInteret'];
 

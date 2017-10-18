@@ -298,8 +298,39 @@ class PdoGsb{
 		PdoGsb::$monPdo->exec($req);
 	}
 
+	public function getLesPraticiens($idVisiteur){
+		$req = "select nom as praticien from Praticien, Visite
+				where Praticien.idP = Visite.refPraticien
+				and refVisiteur = '$idVisiteur' 
+				order by idP desc";
+		$lesPraticiens =array();
+		$laLigne =$res->fetch();
+		while($laLigne !=null) {
+			$praticien = $laLigne['praticien'];
+			$lesPraticiens["$praticien"]=array(
+				"praticien"=>"$praticien");
+			$laLigne = $res->fetch();
+		}
+		return $lesPraticiens;
+	}
 
+	public function getLesDates($idVisiteur,$date){
+		$req = "select * from Visite 
+				where refVisiteur = '$idVisiteur'
+				and finDeVisite = '$date'";
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 
+	public function getLesNiveauxPraticiens($idVisiteur,$niveauinteret){
+		$req = "select * from Visite
+				where refVisiteur = '$idVisiteur'
+				and niveauInteret = '$niveauinteret";
+		$res = PdoGsb::$monPdo->query($req);
+		$laLigne = $res->fetch();
+		return $laLigne;
+	}
 
 	public function creerCompterendu($refPraticien,$date,$niveauinteret,$refVisiteur){
 		$dateFr = dateFrancaisVersAnglais($date);

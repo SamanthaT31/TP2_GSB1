@@ -9,9 +9,9 @@
           <select id="lstPraticien" name="lstPraticien">
           
           <?php
-            foreach ($lesPraticiens as $lePraticien)
+            foreach ($lesPraticiens as $unPraticien)
             {
-              $pratcien = $lePraticien['refPraticien'];
+              $pratcien = $lePraticien['nom'];
               if($lePratcien == $praticienASelectionner)
               {
           ?>

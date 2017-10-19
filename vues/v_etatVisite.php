@@ -1,28 +1,30 @@
-﻿<h3>Vistes du praticien n° <?php echo $refPraticien ?> : </h3>
+﻿<h3>Visites du praticien n° <?php echo $unPraticien ?> : </h3>
   <div class="encadre">
     
   <table class="listeLegere">
       <caption>Liste des visites</caption>
         <tr>
-          <th class="visiteur">Visiteur</th>
-          <th class="finVisite">Fin de visite</th>
-          <th class='nvInteret'>Nv. Interet</th>                
-        </tr>
       <?php      
         foreach ( $lesPraticiens as $unPraticien ) 
         {
-        $visiteur = $unPraticien['visiteur'];
-        $date = $unPraticien['finVisite'];
-        $nvInteret = $unPraticien['nvInteret'];
-      ?>
-            <tr>
-              <td><?php echo $visiteur ?></td>
-              <td><?php echo $date ?></td>
-              <td><?php echo $nvInteret ?></td>
-            </tr>
+          $libelle = $unPraticien['nom'];
+          $dateV = $unPraticien['finDeVisite'];
+          $nivI = $unPraticien['niveauInteret'];
+      ?>           
+          <th> <?php echo $unPraticien ?></th>
+        
+        </tr>
+        <tr>
+            <th class="date">Date Visite</th>
+            <th class="nivI">Niveau Interêt</th>
+        </tr>
+        <tr>
+            <td><?php echo $libelle ?></td>
+            <td><?php echo $laDate ?></td>
+        </tr>
       <?php 
         }
-      ?>
+      ?>   
   </table>
-</div>
+</div> 
 </div>
